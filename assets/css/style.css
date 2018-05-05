@@ -36,7 +36,7 @@ button.movie-btn {
 #gifs-view {
 	
 	display: flex;
-	justify-content: center;
+	flex-wrap: wrap;
 	margin: 10px auto;
 	padding: 10px;
 	color: #009bdd;
