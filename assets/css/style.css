@@ -1,0 +1,72 @@
+header {
+	background-image: url(../images/film.jpg);
+	background-repeat: no-repeat;
+    background-size: cover; 
+	background-position: center;
+	background-size: 100vw 100%;
+	
+	margin: auto;
+	color: white; 
+
+	background-image: url("../images/film.jpg");
+	background-size: 100% 100%;
+} 
+body {
+    line-height: 150%;
+    background-color: white;
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #ddd;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif, 'Roboto', sans-serif;
+    font-size: 1em;
+    width: 100vw;
+    min-height: 100vh;
+    text-align: center;
+}
+#movie-input{
+	background-color: #00a7e3;
+	opacity: 0.5;
+}
+
+
+/*footer*/
+
+#footernav {
+    background-color: #666666;
+    color: lightgray;
+    font-size: 0.7em;
+    text-align: center;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+#footernav a:link,
+a:visited {
+    color: lightgray;
+}
+
+.copy {
+    padding: 5px;
+}
+
+.social {
+    padding: 5px;
+    margin: 0 auto;
+}
+
+@media (min-width: 840px) {
+    .container-flex {
+        width: 70%;
+        height: auto;
+        margin: auto;
+    }
+}
+
+@media (max-width: 375px) {
+    #footernav {
+		display: none;
+	}
+}
