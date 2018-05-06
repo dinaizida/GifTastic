@@ -37,11 +37,14 @@ button.movie-btn {
 	
 	display: flex;
 	flex-wrap: wrap;
-	margin: 10px auto;
+	margin: 20px auto;
 	padding: 10px;
 	color: #009bdd;
 }
-
+.imgPosition {
+    margin-left: 5px;
+    margin-right: 5px;
+}
 /*footer*/
 
 #footernav {
