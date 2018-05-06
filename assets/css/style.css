@@ -4,12 +4,13 @@ header {
     background-size: cover; 
 	background-position: center;
 	background-size: 100vw 100%;
-	
 	margin: auto;
 	color: white; 
-
 	background-image: url("../images/film.jpg");
-	background-size: 100% 100%;
+    background-size: 100% 100%;
+    box-shadow: 0 6px 6px 0 rgba(0,0,0,.14),
+    0 7px 5px -6px rgba(0,0,0,.2), 
+    0 5px 9px 0 rgba(0,0,0,.12);
 } 
 body {
     line-height: 150%;
@@ -26,6 +27,10 @@ body {
     min-height: 100vh;
     text-align: center;
 }
+.container-flex{
+    margin: 10 px auto;
+    margin-bottom: 200px;
+}
 #movie-input{
 	background-color: #009bdd;
 	opacity: 0.5;
@@ -33,18 +38,31 @@ body {
 button.movie-btn {
 	margin: 5px 10px;
 }
+#wrapper {
+    padding-top: 10px;
+    padding-bottom: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 20px auto;
+    
+}
 #gifs-view {
-	
 	display: flex;
 	flex-wrap: wrap;
-	margin: 20px auto;
-	padding: 10px;
+    margin:auto;
+	padding-top: 15px;
 	color: #009bdd;
 }
 .imgPosition {
     margin-left: 5px;
     margin-right: 5px;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,.14),
+    0 5px 3px -4px rgba(0,0,0,.2), 
+    0 3px 7px 0 rgba(0,0,0,.12);
+    border: solid 1px gray;
+    cursor: pointer;
 }
+
 /*footer*/
 
 #footernav {
@@ -70,21 +88,29 @@ a:visited {
     margin: 0 auto;
 }
 
-@media (min-width: 840px) {
-    .container-flex {
-        width: 70%;
-        height: auto;
-        margin: auto;
-    }
+@media (max-width: 990px) {
+   
+
+#wrapper {
+    padding-top: 10px;
+    padding-bottom: 150px;
 }
 
 @media (max-width: 375px) {
+    body{
+        font-size: 0.8em;
+    }
     #footernav {
 		display: none;
 	}
-	button{
-		font-size: 0.5em;
-	}
+	#wrapper {
+        
+        padding-bottom: 5px;
+    }
+    .imgPosition {
+        width: 50%;
+        height: auto;
+    }
 }
 
 /*  BOX shadow from Bootstrap buttons
