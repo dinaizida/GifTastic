@@ -14,7 +14,22 @@ $("document").ready(function() {
             $("#movie-view").append(btn);
         }
     };
-
+   //render favorite shows into fav div
+    function displayFav(){
+        var thisFav = $(this);
+        console.log(this);
+        
+        var favGifi = thisFav.attr("data-animateF");
+        var gifi = $("<img class = 'myFav'>")
+        gifi.attr('src',favGifi);
+        $(".favItem").css("background-color", "#009bdd1d");
+        var t = $("<h3>");
+        $("#favItemTitle").html("<h3> My Favorite Collection </h3>");
+        
+        $(".favItem").append(gifi);
+      
+      
+      } 
     // Function for dumping the JSON content for each button into the #gifs-view
     function displayGifs() {
         var thisMovie = $(this).attr("data-name");
@@ -33,9 +48,9 @@ $("document").ready(function() {
             for (var i = 0; i < resultsOfResp.length; i++) {
                 var gifDiv = $("<div class = 'gifDiv'>"); //create a div to show reating property
                 var rating = resultsOfResp[i].rating; // render rating property into the page div
-                var p = $("<p>").html("Rating: " + rating);
+                var p = $("<p class = 'text-center'>").html("Rating: " +" "+  rating +" " + " " );
                 console.log(rating);
-                p.addClass("text-center");
+                // p.addClass("text-center");
 
                 var gifImDiv = $("<img class = 'imgPosition'>"); // // Creating an image tag
                 // Giving the image tag an src attribute of a proprty pulled off the
@@ -44,13 +59,26 @@ $("document").ready(function() {
                 gifImDiv.attr("data-still", resultsOfResp[i].images.fixed_height_still.url);
                 gifImDiv.attr("data-animate", resultsOfResp[i].images.fixed_height.url);
                 gifImDiv.attr("data-state", "still");
+                
+                //select images for favorite section
+                var checkBoxOutput = "<input type='checkbox' class = 'fav'>&nbsp;<span>Favorite</span>";
+                var fav = $(checkBoxOutput);
+                fav.addClass("fav");
+                // fav.attr("data-animate", resultsOfResp[i].images.fixed_height.url)
+                fav.attr("data-stillF", resultsOfResp[i].images.fixed_height_still.url);
+                fav.attr("data-animateF", resultsOfResp[i].images.fixed_height.url);
+                fav.attr("data-stateF", "still");
 
+
+
+                fav.appendTo(p); // put check box nex to rating info
+                
                 gifDiv.append(p);
                 gifDiv.prepend(gifImDiv);
+                
+                $("#gifs-view").prepend(gifDiv);
     
-                $("#gifs-view").append(gifDiv);
-
-            }
+            };
             
         });
 
@@ -66,6 +94,8 @@ $("document").ready(function() {
             $(this).attr("data-state", "still");
         }
     };
+   
+
     // This .on("click") function will trigger the AJAX Call
     $("#add-movie").on("click", function(event) {
         // Preventing the submit button from trying to submit the form
@@ -86,11 +116,16 @@ $("document").ready(function() {
     });
     // We're adding a click event listener to all elements with the class "movie-btn"
     $(document).on("click", ".movie-btn", displayGifs);
-    $(document).on("click", ".imgPosition", toggleImage);
+    $(document).on("click", ".imgPosition ", toggleImage);
    
-
-
     // Calling the renderButtons function at least once to display the initial list of movies
     renderButtons();
+
+    $(document).on("click", ".fav", displayFav);
+    // $("[type=checkbox]").click(function() {
+    //     // your stuff
+    //   });
+
+   
 
 });
