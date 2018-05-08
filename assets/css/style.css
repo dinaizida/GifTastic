@@ -92,6 +92,13 @@ h3{
                  -10px 20px 5px rgba(0,0,0,0.05);
     padding: 5px;
 }
+p{
+    font-size: 0.8em;
+}
+h4{
+    color: #ff4725;
+    font-size: 0.6em;
+}
 /*footer*/
 
 #footernav {
