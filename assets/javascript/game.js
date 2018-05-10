@@ -44,7 +44,7 @@ $("document").ready(function() {
         var thisMovie = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thisMovie + "&api_key=m3zSKwwoURQE6Tpi3UGpKTAT7YY3kq28&limit=10&rating=g";
         // hit the queryURL with $ajax, then take the response data
-        // and display it in the div 
+        // and display it in the div
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -67,7 +67,7 @@ $("document").ready(function() {
                 gifImDiv.attr("src", resultsOfResp[i].images.fixed_height.url);
                 gifImDiv.attr("data-still", resultsOfResp[i].images.fixed_height_still.url);
                 gifImDiv.attr("data-animate", resultsOfResp[i].images.fixed_height.url);
-                gifImDiv.attr("data-state", "still");
+                gifImDiv.attr("data-state", "animate");
 
                 //select images for favorite section
                 var checkBoxOutput = "<input type='checkbox' class = 'fav'>&nbsp;<span>Favorite</span>";
