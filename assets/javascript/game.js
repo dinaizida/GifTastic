@@ -1,10 +1,39 @@
 $("document").ready(function() {
 
+    //localStorage.clear();
     // Initial array of movies
     var topics = ["The Sopranos", "Seinfeld", "Fargo", "Mad Men", "Cheers", "All in the Family",
         "Good Times", "Maude", "The Fire", "The West Wing", "The Simpsons", "I love Lucy"
     ];
-    //render all movies names as buttons
+//****************** */
+
+
+var tasksButtons = JSON.parse(localStorage.getItem("tasksButtons")) || [];
+
+
+renderButtons();
+function renderTasksButtons(){
+   
+    $("#movie-view-add").empty();
+    // renderButtons();
+
+    for (var i = 0; i < tasksButtons.length; i++) {
+
+        var toDoTask = tasksButtons[i];
+
+        var btn = $('<button class="btn btn-raised btn-info movie-btn">');
+        btn.attr("data-name", tasksButtons[i]);
+        // btn.append(" "+ toDoTask);
+        btn.text(tasksButtons[i]);
+        $("#movie-view-add").append(btn);
+        
+    }
+    
+}
+
+
+ //****************** */   
+    // // //render all movies names as buttons
     function renderButtons() {
         $("#movie-view").empty();
         for (i in topics) {
@@ -124,21 +153,29 @@ $("document").ready(function() {
             $("#movie-form").prepend(alertMes) // console.log(alertMes);
         } else {
             topics.push(movie);
+            tasksButtons.push(movie);
+            localStorage.setItem("tasksButtons", JSON.stringify(tasksButtons));
+
+            console.log(tasksButtons);
+            console.log(topics);
         }
         // calling renderButtons which handles the processing of our movie array
-        renderButtons();
+        $("#movie-input").val("");
+        renderTasksButtons();
     });
     // We're adding a click event listener to all elements with the class "movie-btn"
     $(document).on("click", ".movie-btn", displayGifs);
     $(document).on("click", ".imgPosition ", toggleImage);
 
     // Calling the renderButtons function at least once to display the initial list of movies
-    renderButtons();
+    // renderButtons();
+    renderTasksButtons();
 
     $(document).on("click", ".fav", displayFav);
 
     // download button
 
     $(document).on("click", ".downloadButton", downLoad);
+
 
 });
