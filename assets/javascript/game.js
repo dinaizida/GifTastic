@@ -1,21 +1,21 @@
 $("document").ready(function() {
 
-// poster app 
+// poster app
 
     var movies = ["The Sopranos", "Seinfeld", "Fargo", "Mad Men", "Cheers", "All in the Family",
     "Good Times", "Maude", "The Fire", "The West Wing", "The Simpsons", "I love Lucy"
 ];
 //**********************local storage to render new buttons */
- 
+
 
 var tasksButtons = JSON.parse(localStorage.getItem("tasksButtons")) || [];
 
 
 renderButtonsP();
 function renderTasksButtons(){
-   
+
     $("#movie-view-add").empty();
-    
+
 
     for (var i = 0; i < tasksButtons.length; i++) {
 
@@ -26,9 +26,9 @@ function renderTasksButtons(){
         // btn.append(" "+ toDoTask);
         btn.text(tasksButtons[i]);
         $("#movie-view-add").append(btn);
-        
+
     }
-    
+
 }
 
 //*********************** */
@@ -45,7 +45,7 @@ function renderTasksButtons(){
         var movieDiv = $("<div class='movie'>");
         // Storing the rating data
         var rating = response.Rated;
-        storageRat = localStorage.setItem("rating", rating); // local storage to save info 
+        storageRat = localStorage.setItem("rating", rating); // local storage to save info
         // Creating an element to have the rating displayed
         var getStorageRat = localStorage.getItem("rating");
         var pOne = $("<p>").text("Rating: " + getStorageRat);
@@ -94,9 +94,9 @@ function renderTasksButtons(){
 
 
     //************** */
-    
+
     // ajax call from GIF API to upload gifs from the same movie as poster movie
-    
+
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -217,14 +217,14 @@ function renderTasksButtons(){
     // onclick to download images
     function downLoad() {
         var thisA = $(this);
-        
-        var downloadIm = thisA.attr("data-button");
-        
 
+        var downloadIm = thisA.attr("data-button");
+
+         var href = downloadIm;
         window.location.href = href;
     };
     // Function for dumping the JSON content for each button into the #gifs-view
-    
+
 
     function toggleImage() {
         var state = $(this).attr("data-state");
