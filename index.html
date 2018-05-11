@@ -16,54 +16,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>GifTastic and OMDb API</title>
+    <title>GifTastic</title>
 </head>
 
 <body>
     <header class="page-header jumbotron">
-        <h1 id="titleText">GIPHY Collection and The Movie Posters</h1>
+        <h1 id="titleText">The Movie Posters with GIPHY Collection</h1>
     </header>
-    <!-- navigation menu to select API url -->
-    <ul class="nav nav-tabs">
-            <li id ="gif" class="nav-item">
-              <a class="nav-link" href="index.html">GIPHY Movie Collection</a>
-            </li>
-            <li id ="poster" class="nav-item">
-              <a class="nav-link active" href="poster.html">The Movie Posters</a>
-            </li>
-          </ul>
-    <div class="container-flex" id = "wrapper">
+
+    <div class="poster container-flex" id="wrapper">
 
         <div class="row">
             <div class="col-lg-12 col-me-12 col-sm-12 col-xs-12">
                 <form id="movie-form">
                     <input type="text" id="movie-input">&nbsp;&nbsp;
-                    <button id="add-movie" type="submit" class=" btn btn-raised btn-warning">Add a TV show</button>
+                    <button id="add-movie" type="submit" class=" btn btn-raised btn-warning">Add a Movie</button>
                 </form>
             </div>
         </div>
-        <div id = "buttons-row" class="row">
+        <div id="buttons-row" class="row">
             <div class="col-lg-12 col-me-12 col-sm-12 col-xs-12">
-                    <!-- //render all movies names as buttons -->
-                <div id="movie-view" ></div> 
-                <div id="movie-view-add" ></div>
-            </div>
-        </div>
-       
-        <div class = "row">
-            <div class="col-lg-12 col-me-12 col-sm-12 col-xs-12">
-                    <div id = "favItemTitle"></div>
-                    <div class = "favItem"></div>
+                <!-- //render all movies names as buttons -->
+                <div id="buttons-view"></div>
+                <div id="movie-view-add"></div> 
+                <!-- <div id="movies-view"></div> -->
             </div>
         </div>
         
+
+        <!-- <div id="movies-view"></div> -->
         <div class="row">
-            <div class="col-lg-12 col-me-12 col-sm-12 col-xs-12">
-                <!-- Gifs will Get Dumped Dere -->
-                
-                <div id="gifs-view"></div>
+            <div class="col-lg-6 col-me-6 col-sm-6 col-xs-6">
+                <!-- //render all posters  -->
+                <div id="movies-view"></div>
+                <div id="favItemTitle"></div>
+                <div class="favItem"></div>
             </div>
+                <div class="col-lg-6 col-me-6 col-sm-6 col-xs-6">
+
+                    <div id="gifs-view"></div>
+                </div>
+                
+            
         </div>
+      
+        
+
+        
     </div>
 
     <div id="footernav" class="navbar navbar-default fixed-bottom">

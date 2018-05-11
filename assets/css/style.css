@@ -28,8 +28,18 @@ body {
     text-align: center;
 }
 #buttons-row{
-    margin: 10px auto;    
+    margin: 10px auto; 
+    display: flex;
+  justify-content: center;    
 
+}
+#movies-view{
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.poster{
+    color:  #009bdd;
 }
 .container-flex{
     margin: 10 px auto;
@@ -58,21 +68,23 @@ button.movie-btn {
 	color: #009bdd;
 }
 .imgPosition  {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
+    width: 90%;
+    height: auto;
+    margin: 10px auto;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,.14),
     0 5px 3px -4px rgba(0,0,0,.2), 
     0 3px 7px 0 rgba(0,0,0,.12);
     border: solid 1px gray;
     cursor: pointer;
 }
-.myFav{
-    width: 20%;
+.gifDiv{
+    width: 90%;
     height: auto;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
+}
+.myFav{
+    width: 60%;
+    height: auto;
+    margin: 10px auto;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,.14),
     0 5px 3px -4px rgba(0,0,0,.2), 
     0 3px 7px 0 rgba(0,0,0,.12);

@@ -5,6 +5,33 @@ $("document").ready(function() {
     var movies = ["The Sopranos", "Seinfeld", "Fargo", "Mad Men", "Cheers", "All in the Family",
     "Good Times", "Maude", "The Fire", "The West Wing", "The Simpsons", "I love Lucy"
 ];
+//**********************local storage */
+ 
+
+var tasksButtons = JSON.parse(localStorage.getItem("tasksButtons")) || [];
+
+
+renderButtonsP();
+function renderTasksButtons(){
+   
+    $("#movie-view-add").empty();
+    
+
+    for (var i = 0; i < tasksButtons.length; i++) {
+
+        var toDoTask = tasksButtons[i];
+
+        var btn = $('<button class="btn btn-raised btn-info movie-btn">');
+        btn.attr("data-name", tasksButtons[i]);
+        // btn.append(" "+ toDoTask);
+        btn.text(tasksButtons[i]);
+        $("#movie-view-add").append(btn);
+        
+    }
+    
+}
+
+//*********************** */
     // displayMovieInfo function re-renders the HTML to display the appropriate content
     function displayMovieInfo() {
       var movie = $(this).attr("data-name");
@@ -18,32 +45,38 @@ $("document").ready(function() {
         var movieDiv = $("<div class='movie'>");
         // Storing the rating data
         var rating = response.Rated;
+        localStorage.setItem("rating", rating);
         // Creating an element to have the rating displayed
-        var pOne = $("<p>").text("Rating: " + rating);
+        var pOne = $("<p>").text("Rating: " + localStorage.getItem("rating"));
+        console.log(localStorage.getItem("rating"));
         // Displaying the rating
         movieDiv.append(pOne);
         // Storing the release year
         var released = response.Released;
+        localStorage.setItem("released", released);
         // Creating an element to hold the release year
-        var pTwo = $("<p>").text("Released: " + released);
+        var pTwo = $("<p>").text("Released: " + localStorage.getItem("released"));
         // Displaying the release year
         movieDiv.append(pTwo);
         // Storing the plot
         var plot = response.Plot;
+        localStorage.setItem("plot", plot);
         // Creating an element to hold the plot
-        var pThree = $("<p>").text("Plot: " + plot);
+        var pThree = $("<p>").text("Plot: " + localStorage.getItem("plot"));
         // Appending the plot
         movieDiv.append(pThree);
         // Retrieving the URL for the image
         var imgURL = response.Poster;
+        localStorage.setItem("imgURL", imgURL);
         // Creating an element to hold the image
-        var image = $("<img>").attr("src", imgURL);
+        var image = $("<img>").attr("src", localStorage.getItem("imgURL"));
         // Appending the image
-        movieDiv.append(image);
+        movieDiv.prepend(image);
         // Putting the entire movie above the previous movies
         $("#movies-view").prepend(movieDiv);
       });
-    }
+      displayGifs();
+    };
     // Function for displaying movie data
     function renderButtonsP() {
       // Deleting the movies prior to adding new movies
@@ -63,68 +96,81 @@ $("document").ready(function() {
         // Adding the button to the buttons-view div
         $("#buttons-view").append(a);
       }
-    }
+    };
     // This function handles events where a movie button is clicked
     $("#add-movie").on("click", function(event) {
       event.preventDefault();
       // This line grabs the input from the textbox
       var movie = $("#movie-input").val().trim();
+      //check if anything typed by user into the add field to prevent adding an empty button
+      if (movie == 0) {
+        var alertMes = $("<p id ='alert' class='alert alert-danger alert-dismissible close' data-dismiss='alert' aria-label='close' role='alert'>" + "Please Enter the Name of the TV Show" + "&nbsp&nbsp&times" + "<p/>");
+        $("#movie-form").prepend(alertMes) // console.log(alertMes);
+    } else {
       // Adding movie from the textbox to our array
       movies.push(movie);
+      tasksButtons.push(movie);
+      localStorage.setItem("tasksButtons", JSON.stringify(tasksButtons));
+
+      console.log(tasksButtons);
+      console.log(movies);
+      }
+      //empty input field
+      $("#movie-input").val("");
       // Calling renderButtons which handles the processing of our movie array
-      renderButtonsP();
+      renderTasksButtons();
     });
     // Adding a click event listener to all elements with a class of "movie-btn"
-    $(document).on("click", ".movie-btn", displayMovieInfo);
+    $(document).on("click", ".movie-btn", displayMovieInfo );
     // Calling the renderButtons function to display the intial buttons
-    renderButtonsP();
+    renderTasksButtons();
 
 
     //localStorage.clear();
 //GIFI app
     // Initial array of movies
-    var topics = ["The Sopranos", "Seinfeld", "Fargo", "Mad Men", "Cheers", "All in the Family",
-        "Good Times", "Maude", "The Fire", "The West Wing", "The Simpsons", "I love Lucy"
-    ];
+    // var topics = ["The Sopranos", "Seinfeld", "Fargo", "Mad Men", "Cheers", "All in the Family",
+    //     "Good Times", "Maude", "The Fire", "The West Wing", "The Simpsons", "I love Lucy"
+    // ];
 
 //****************** local storage*/
 
 
-var tasksButtons = JSON.parse(localStorage.getItem("tasksButtons")) || [];
+// var tasksButtons = JSON.parse(localStorage.getItem("tasksButtons")) || [];
 
 
-renderButtons();
-function renderTasksButtons(){
+// renderButtons();
+// function renderTasksButtons(){
    
-    $("#movie-view-add").empty();
-    // renderButtons();
-
-    for (var i = 0; i < tasksButtons.length; i++) {
-
-        var toDoTask = tasksButtons[i];
-
-        var btn = $('<button class="btn btn-raised btn-info movie-btn">');
-        btn.attr("data-name", tasksButtons[i]);
-        // btn.append(" "+ toDoTask);
-        btn.text(tasksButtons[i]);
-        $("#movie-view-add").append(btn);
-        
-    }
+//     $("#movie-view-add").empty();
     
-}
+
+//     for (var i = 0; i < tasksButtons.length; i++) {
+
+//         var toDoTask = tasksButtons[i];
+
+//         var btn = $('<button class="btn btn-raised btn-info movie-btn">');
+//         btn.attr("data-name", tasksButtons[i]);
+//         // btn.append(" "+ toDoTask);
+//         btn.text(tasksButtons[i]);
+//         $("#movie-view-add").append(btn);
+        
+//     }
+    
+// }
 
 
  //****************** */   
-    // // //render all movies names as buttons
-    function renderButtons() {
-        $("#movie-view").empty();
-        for (i in topics) {
-            var btn = $('<button class="btn btn-raised btn-info movie-btn">');
-            btn.attr("data-name", topics[i]);
-            btn.text(topics[i]);
-            $("#movie-view").append(btn);
-        }
-    };
+    // // // //render all movies names as buttons
+    // function renderButtons() {
+    //     $("#movie-view").empty();
+    //     for (i in topics) {
+    //         var btn = $('<button class="btn btn-raised btn-info movie-btn">');
+    //         btn.attr("data-name", topics[i]);
+    //         btn.text(topics[i]);
+    //         $("#movie-view").append(btn);
+    //     }
+    // };
     //render favorite shows into fav div
     function displayFav() {
         var thisFav = $(this);
@@ -135,25 +181,25 @@ function renderTasksButtons(){
         gifi.attr('src', favGifi);
         $(".favItem").css("background-color", "#009bdd1d");
         var t = $("<h3>");
-        $("#favItemTitle").html("<h3> My Favorite Collection </h3>");
+        $("#favItemTitle").html("<h3> My Favorite GIPHY </h3>");
 
         $(".favItem").append(gifi);
 
-    }
+    };
     // onclick to download images
     function downLoad() {
         var thisA = $(this);
-
+        
         var downloadIm = thisA.attr("data-button");
-
-        var href = downloadIm;
+        
 
         window.location.href = href;
-    }
+    };
     // Function for dumping the JSON content for each button into the #gifs-view
     function displayGifs() {
-        var thisMovie = $(this).attr("data-name");
-         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + thisMovie + "&api_key=m3zSKwwoURQE6Tpi3UGpKTAT7YY3kq28&limit=10&rating=g";
+        // var thisMovie = $(this).attr("data-name");
+        var movie = $(this).attr("data-name");
+         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + movie + "&api_key=m3zSKwwoURQE6Tpi3UGpKTAT7YY3kq28&limit=4&rating=g";
         
         // hit the queryURL with $ajax, then take the response data
         // and display it in the div
@@ -223,36 +269,36 @@ function renderTasksButtons(){
     };
 
     // This .on("click") function will trigger the AJAX Call
-    $("#add-movie").on("click", function(event) {
-        // Preventing the submit button from trying to submit the form
-        // We're optionally using a form so the user may hit Enter to search instead of clicking the button
-        event.preventDefault();
-        // Here we grab the text from the input box and assign to to a variable movie
-        var movie = $("#movie-input").val().trim();
-        console.log(movie);
-        //check if anything typed by user into the add field to prevent adding an empty button
-        if (movie == 0) {
-            var alertMes = $("<p id ='alert' class='alert alert-danger alert-dismissible close' data-dismiss='alert' aria-label='close' role='alert'>" + "Please Enter the Name of the TV Show" + "&nbsp&nbsp&times" + "<p/>");
-            $("#movie-form").prepend(alertMes) // console.log(alertMes);
-        } else {
-            topics.push(movie);
-            tasksButtons.push(movie);
-            localStorage.setItem("tasksButtons", JSON.stringify(tasksButtons));
+    // $("#add-movie").on("click", function(event) {
+    //     // Preventing the submit button from trying to submit the form
+    //     // We're optionally using a form so the user may hit Enter to search instead of clicking the button
+    //     event.preventDefault();
+    //     // Here we grab the text from the input box and assign to to a variable movie
+    //     var movie = $("#movie-input").val().trim();
+    //     console.log(movie);
+    //     //check if anything typed by user into the add field to prevent adding an empty button
+    //     if (movie == 0) {
+    //         var alertMes = $("<p id ='alert' class='alert alert-danger alert-dismissible close' data-dismiss='alert' aria-label='close' role='alert'>" + "Please Enter the Name of the TV Show" + "&nbsp&nbsp&times" + "<p/>");
+    //         $("#movie-form").prepend(alertMes) // console.log(alertMes);
+    //     } else {
+    //         topics.push(movie);
+    //         tasksButtons.push(movie);
+    //         localStorage.setItem("tasksButtons", JSON.stringify(tasksButtons));
 
-            console.log(tasksButtons);
-            console.log(topics);
-        }
-        // calling renderButtons which handles the processing of our movie array
-        $("#movie-input").val("");
-        renderTasksButtons();
-    });
+    //         console.log(tasksButtons);
+    //         console.log(topics);
+    //     }
+    //     // calling renderButtons which handles the processing of our movie array
+    //     $("#movie-input").val("");
+    //     // renderTasksButtons();
+    // });
     // We're adding a click event listener to all elements with the class "movie-btn"
     $(document).on("click", ".movie-btn", displayGifs);
     $(document).on("click", ".imgPosition ", toggleImage);
 
     // Calling the renderButtons function at least once to display the initial list of movies
     // renderButtons();
-    renderTasksButtons();
+    // renderTasksButtons();
 
     $(document).on("click", ".fav", displayFav);
 
@@ -260,10 +306,6 @@ function renderTasksButtons(){
 
     $(document).on("click", ".downloadButton", downLoad);
 
-// end of GIFI app functions
-
-    $(document).on("click", "#gif", renderTasksButtons);
-    $(document).on("click", "#poster", renderButtonsP);
 
 
 });
