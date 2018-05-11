@@ -30,7 +30,7 @@ body {
 #buttons-row{
     margin: 10px auto; 
     display: flex;
-  justify-content: center;    
+    justify-content: center;    
 
 }
 #movies-view{
@@ -80,9 +80,10 @@ button.movie-btn {
 .gifDiv{
     width: 90%;
     height: auto;
+   
 }
 .myFav{
-    width: 60%;
+    width: 30%;
     height: auto;
     margin: 10px auto;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,.14),
@@ -96,6 +97,7 @@ button.movie-btn {
     
     padding: 5px;
     padding-bottom: 10px;
+    margin: 5px auto;
 }
 h3{
     color: #ff4725;
