@@ -1,8 +1,6 @@
 $("document").ready(function() {
 
-   //global var
-
-   
+    //global var
 
     // poster app
 
@@ -11,16 +9,13 @@ $("document").ready(function() {
     ];
     //**********************local storage to render new buttons */
 
-
     var tasksButtons = JSON.parse(localStorage.getItem("tasksButtons")) || [];
-
 
     renderButtonsP();
 
     function renderTasksButtons() {
 
         $("#movie-view-add").empty();
-
 
         for (var i = 0; i < tasksButtons.length; i++) {
 
@@ -35,10 +30,10 @@ $("document").ready(function() {
         }
 
     }
-    
+
     //*********************** */
     // displayMovieInfo function to display poster
-    // var rowCounter = 1;
+    
     function displayMovieInfo() {
         var movie = $(this).attr("data-name");
         var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=2deee733";
@@ -48,11 +43,11 @@ $("document").ready(function() {
             method: "GET"
         }).then(function(response) {
             // Creating a div to hold the movie
-            
+
             var movieDiv = $("<div class='movie'>");
             // movieDiv.attr("id", rowCounter);
             // rowCounter++;
-            
+
             // Storing the rating data
             var rating = response.Rated;
             storageRat = localStorage.setItem("rating", rating); // local storage to save info
@@ -88,12 +83,11 @@ $("document").ready(function() {
             localStorage.setItem("imgURL", imgURL);
             // Creating an element to hold the image
             var getStorageIm = localStorage.getItem("umgURL");
-            var image = $("<img>").attr("src", localStorage.getItem("imgURL"));
+            var image = $("<img class = 'posterImage'>").attr("src", localStorage.getItem("imgURL"));
             // Appending the image
             movieDiv.prepend(image);
             // Putting the poster above the poster info
             // $("#movies-view").prepend(movieDiv);
-           
 
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + movie + "&api_key=m3zSKwwoURQE6Tpi3UGpKTAT7YY3kq28&limit=10&rating=g";
             console.log("movie for gifs " + movie);
@@ -101,7 +95,6 @@ $("document").ready(function() {
             //************** local storage to render gifs*/
 
             var tasksGifs = JSON.parse(localStorage.getItem("tasksGifs")) || [];
-
 
             //************** */
 
@@ -156,16 +149,15 @@ $("document").ready(function() {
                     $("#gifs-view").css("background-color", "#009bdd1d");
                     $("#gifs-view").prepend(gifDiv);
                     $("#gifs-view").prepend(movieDiv);
-                    
+
                     localStorage.setItem("tasksGifs", JSON.stringify(tasksGifs));
 
                 };
 
             });
-           
+
         });
     }
-
 
     // Function for displaying posters data
     function renderButtonsP() {
@@ -187,15 +179,22 @@ $("document").ready(function() {
             $("#buttons-view").append(a);
         }
     };
-    
 
     //render favorite shows into fav div
+    var count = 0;
+
     function displayFav() {
         var thisFav = $(this);
         console.log(this);
-
-        // var favGifi = thisFav.attr("data-animateF");
         var gifi = $("<img class = 'myFav'>")
+        gifi.attr("id", "item_" + count);
+
+        var gifiFavRemove = $("<button class = ' checkFav btn btn-raised btn-secondary'>");
+        gifiFavRemove.attr("data-count", count);
+        gifiFavRemove.append("✓");
+        gifi = gifi.prepend(gifiFavRemove);
+        $(".favItem").append(gifiFavRemove);
+        count++;
 
         gifi.attr('src', thisFav.attr("data-animateF"));
 
@@ -203,26 +202,21 @@ $("document").ready(function() {
         gifi.attr("data-animateF", thisFav.attr("data-animateF"));
         gifi.attr("data-stateF", "animate");
 
-
         $(".favItem").css("background-color", "#ffece9");
         var t = $("<h3>");
         $("#favItemTitle").html("<h3> My Favorite GIPHY </h3>");
-
         $(".favItem").append(gifi);
 
     };
     // onclick to download images
     function downLoad() {
         var thisA = $(this);
-
         var downloadIm = thisA.attr("data-button");
-
         var href = downloadIm;
         window.location.href = href;
     };
-    // Function for dumping the JSON content for each button into the #gifs-view
 
-
+    // toggle animation for gifs under the posters 
     function toggleImage() {
         var state = $(this).attr("data-state");
 
@@ -234,7 +228,7 @@ $("document").ready(function() {
             $(this).attr("data-state", "still");
         }
     };
-
+    // toggle fav section images
     function toggleImageF() {
         var state = $(this).attr("data-stateF");
 
@@ -246,9 +240,8 @@ $("document").ready(function() {
             $(this).attr("data-stateF", "still");
         }
     };
-    
 
-    // Calling the renderButtons function to display the intial buttons
+    // to display all buttons on the top of the page
     renderTasksButtons();
 
     // button to add movie
@@ -273,6 +266,16 @@ $("document").ready(function() {
         $("#movie-input").val("");
         // Calling renderButtons which handles the processing of our movie array
         renderTasksButtons();
+    });
+
+    //remove fav image from fav section
+    $(document.body).on("click", ".checkFav", function() {
+
+        // Get the number of the checkbox attached to image in the fav section.
+        var toRemove = $(this).attr("data-count");
+        console.log(this);
+        console.log(toRemove);
+        $("#item-" + toRemove).remove();
     });
 
     // display posters and gifs
