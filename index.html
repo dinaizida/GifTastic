@@ -24,7 +24,7 @@
         <h1 id="titleText">The Movie Posters with GIPHY Collection</h1>
     </header>
 
-    <div class="poster container-flex" id="wrapper">
+    <div class="poster container" id="wrapper">
 
         <div class="row">
             <div class="col-lg-12 col-me-12 col-sm-12 col-xs-12">
@@ -38,37 +38,35 @@
             <div class="col-lg-12 col-me-12 col-sm-12 col-xs-12">
                 <!-- //render all movies names as buttons -->
                 <div id="buttons-view"></div>
-                <div id="movie-view-add"></div> 
-                <!-- <div id="movies-view"></div> -->
+                <div id="movie-view-add"></div>
+               
             </div>
         </div>
-        
 
-        <!-- <div id="movies-view"></div> -->
-        <div class="row">
-            <div class="col-lg-6 col-me-6 col-sm-6 col-xs-6">
-                <!-- //render all posters  -->
+        <div class="row" >
+            <div class="col-lg-12 col-me-12 col-sm-12 col-xs-12">
+                <!-- //posters section -->
                 <div id="movies-view"></div>
-                
-            </div>
-                <div class="col-lg-6 col-me-6 col-sm-6 col-xs-6">
+            </div>    
+        </div>
+        <div class="row" >
+                <div class="col-lg-12 col-me-12 col-sm-12 col-xs-12">       
+                    <!-- // Favorite section -->
                     <div id="favItemTitle"></div>
-                <div class="favItem"></div>
+                    <div class="favItem"></div>
+                    <!-- // gifs loading section -->
                     <div id="gifs-view"></div>
                 </div>
-                
-            
         </div>
-      
-        
 
-        
     </div>
 
     <div id="footernav" class="navbar navbar-default fixed-bottom">
         <div class="container">
             <div class="copy">
-                Copyright &copy; <span id="copyright_year"></span> Designed by Dina Rudenko at <a target="_blank" href="http://businessonwww.com/">BusinessOnWWW.com</a> | Austin Texas Web Design | All Rights Reserved. | Powered by GIPHY |
+                Copyright &copy;
+                <span id="copyright_year"></span> Designed by Dina Rudenko at
+                <a target="_blank" href="http://businessonwww.com/">BusinessOnWWW.com</a> | Austin Texas Web Design | All Rights Reserved. | Powered by GIPHY |
             </div>
             <script>
                 function init() {
@@ -84,10 +82,18 @@
             </script>
 
             <div class="social">
-                <a href="https://github.com/dinaizida" target="_blank"><i style="font-size:16px" class="fa">&#xf092;</i></a>
-                <a href="https://www.linkedin.com/in/DinaRudenko/" target="_blank"><i style="font-size:16px" class="fa">&#xf08c;</i></a>
-                <a href="https://stackoverflow.com/users/6179580/dina" target="_blank"><i style="font-size:16px" class="fa">&#xf16c;</i></a>
-                <a href="https://www.facebook.com/businessonwww/" target="_blank"><i style="font-size:16px" class="fa">&#xf082;</i></a>
+                <a href="https://github.com/dinaizida" target="_blank">
+                    <i style="font-size:16px" class="fa">&#xf092;</i>
+                </a>
+                <a href="https://www.linkedin.com/in/DinaRudenko/" target="_blank">
+                    <i style="font-size:16px" class="fa">&#xf08c;</i>
+                </a>
+                <a href="https://stackoverflow.com/users/6179580/dina" target="_blank">
+                    <i style="font-size:16px" class="fa">&#xf16c;</i>
+                </a>
+                <a href="https://www.facebook.com/businessonwww/" target="_blank">
+                    <i style="font-size:16px" class="fa">&#xf082;</i>
+                </a>
             </div>
         </div>
     </div>

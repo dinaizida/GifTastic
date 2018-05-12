@@ -33,14 +33,14 @@ body {
     justify-content: center;    
 
 }
+
 #movies-view{
+    min-width: 100%;
+    height: auto;
     padding: 10px;
     margin: 10px auto;
 }
 
-.poster{
-    color:  #009bdd;
-}
 .container-flex{
     margin: 10 px auto;
     margin-bottom: 200px;
@@ -53,6 +53,7 @@ button.movie-btn {
 	margin: 5px 10px;
 }
 #wrapper {
+   
     padding-top: 10px;
     padding-bottom: 50px;
     padding-left: 0px;
@@ -64,11 +65,12 @@ button.movie-btn {
 	display: flex;
 	flex-wrap: wrap;
     margin:auto;
-	padding-top: 15px;
+    padding-top: 15px;
+    padding-block-end: 20px;
 	color: #009bdd;
 }
 .imgPosition  {
-    width: 90%;
+    width: 50%;
     height: auto;
     margin: 10px auto;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,.14),
@@ -77,15 +79,20 @@ button.movie-btn {
     border: solid 1px gray;
     cursor: pointer;
 }
-.gifDiv{
-    width: 90%;
-    height: auto;
-   
+.poster{
+    margin: 10px auto;
+    padding: 5px;
+    font-size: 1em;
+    color : #0077aa;
+    
+
 }
+
 .myFav{
-    width: 30%;
+    width: 20%;
     height: auto;
     margin: 10px auto;
+    margin-left: 10px;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,.14),
     0 5px 3px -4px rgba(0,0,0,.2), 
     0 3px 7px 0 rgba(0,0,0,.12);
@@ -97,7 +104,7 @@ button.movie-btn {
     
     padding: 5px;
     padding-bottom: 10px;
-    margin: 5px auto;
+    margin: 10px auto;
 }
 h3{
     color: #ff4725;
