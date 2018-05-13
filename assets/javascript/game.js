@@ -33,7 +33,7 @@ $("document").ready(function() {
 
     //*********************** */
     // displayMovieInfo function to display poster
-    
+
     function displayMovieInfo() {
         var movie = $(this).attr("data-name");
         var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=2deee733";
@@ -216,7 +216,7 @@ $("document").ready(function() {
         window.location.href = href;
     };
 
-    // toggle animation for gifs under the posters 
+    // toggle animation for gifs under the posters
     function toggleImage() {
         var state = $(this).attr("data-state");
 
@@ -275,7 +275,8 @@ $("document").ready(function() {
         var toRemove = $(this).attr("data-count");
         console.log(this);
         console.log(toRemove);
-        $("#item-" + toRemove).remove();
+        $("#item_" + toRemove).remove();
+      $(this).remove();
     });
 
     // display posters and gifs
