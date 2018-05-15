@@ -11,7 +11,7 @@ An interactive web browser (mobile responsive) application that using the GIPHY 
 4. Every gif has a checkbox to select favorite gifs and place them info the My Favorite GIPHY section of the page. 
 5. Every gif in the Favorite section has a button to remove the gif.
 6. There is an Add a Movie button allows user to add more buttons with a movie names of the user choice. This form also displays a warning message if user would try to click on the Add a Movie button without typing a name of the movie into the input field.
-7. Local Storage utilized to save all information after the user refresh the page. 
+7. Local Storage utilized to save new buttons added after the user refresh the page. 
 
 
 Project Details:
