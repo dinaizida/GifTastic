@@ -1,5 +1,6 @@
 GifTastic
 
+https://dinaizida.github.io/GifTastic/ 
 
 Project Description:
 
@@ -18,4 +19,4 @@ Project Details:
 
 Technologies Used: HTML, CSS, jQuery, JavaScript, GIPHY API, OMDb RESTful API,  AJAX, and Material Design front-end component library for Bootstrap.
 
-
+![Screen Shot](https://github.com/dinaizida/GifTastic/blob/master/assets/images/git.png)
